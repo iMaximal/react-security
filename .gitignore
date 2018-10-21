@@ -3,7 +3,7 @@
 .idea
 .vscode
 .cache
-.dist
+dist
 
 # dependencies
 node_modules
