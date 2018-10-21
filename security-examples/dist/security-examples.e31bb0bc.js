@@ -22147,15 +22147,32 @@ function (_Component) {
   _inherits(EscapeInput, _Component);
 
   function EscapeInput() {
+    var _this;
+
     _classCallCheck(this, EscapeInput);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EscapeInput).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EscapeInput).call(this));
+
+    _this.updateTitle = function (event) {
+      _this.setState({
+        title: event.target.value
+      });
+    };
+
+    _this.state = {
+      title: ''
+    };
+    return _this;
   }
 
   _createClass(EscapeInput, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Safe React Input"), _react.default.createElement("div", null, inputString));
+      return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Safe React Input"), _react.default.createElement("div", null, inputString), _react.default.createElement("h4", null, this.state.title), _react.default.createElement("input", {
+        type: "text",
+        placeholder: "set title...",
+        onChange: this.updateTitle
+      }), _react.default.createElement("br", null));
     }
   }]);
 
