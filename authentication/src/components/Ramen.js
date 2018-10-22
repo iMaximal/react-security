@@ -5,7 +5,7 @@ const Ramen = () => (
     <div>
         <h2>Ramen</h2>
         <Link to='/'>Home</Link>
-        <div><img src='https://i.imgur.com/rPEt1g1.jpg' /></div>
+        <div><img src='http://seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg' /></div>
     </div>
 );
 
