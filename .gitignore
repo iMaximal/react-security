@@ -4,6 +4,7 @@
 .vscode
 .cache
 dist
+auth0-credentials.txt
 
 # dependencies
 node_modules
