@@ -1,5 +1,6 @@
 import DangerousHTML from './DangerousHTML';
 import EscapeInput from './EscapeInput';
+import Eval from './Eval';
 import UserHref from './UserHref';
 
-export { EscapeInput, DangerousHTML, UserHref };
+export { EscapeInput, Eval, DangerousHTML, UserHref };
