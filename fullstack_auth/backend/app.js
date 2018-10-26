@@ -11,4 +11,13 @@ app.get('/user/all', (req, res, next) => {
     })
 });
 
+app.use((err, req, res, next) => {
+    if (!err.statusCode) err.statusCode = 500;
+
+    res.status(err.statusCode).json({
+        type: 'error',
+        msg: err.message,
+    });
+});
+
 module.exports = app;
