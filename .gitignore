@@ -6,6 +6,9 @@
 dist
 auth0-credentials.txt
 
+# for study commented
+# secrets
+
 # dependencies
 node_modules
 
