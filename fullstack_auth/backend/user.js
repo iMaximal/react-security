@@ -107,5 +107,19 @@ const set_session = (username, res, session_id) => {
     );
   });
   
+  router.get('/logout', (req, res, next) => {
+    const { username, id } = Session.parse(req.cookies.session_str);
+  
+    pool.query(
+      'UPDATE users SET session_id = NULL WHERE username_hash = $1',
+      [hash(username)],
+      (q_err, q_res) => {
+        if (q_err) return next(q_err);
+  
+        res.clearCookie('session_str');
+        res.json({ msg: 'Successful logout' });
+      }
+    )
+  });
 
 module.exports = router;
