@@ -122,4 +122,22 @@ const set_session = (username, res, session_id) => {
     )
   });
 
+  router.get('/authenticated', (req, res, next) => {
+    const { username, id } = Session.parse(req.cookies.session_str);
+  
+    pool.query(
+      'SELECT * FROM users WHERE username_hash = $1',
+      [hash(username)],
+      (q_err, q_res) => {
+        if (q_err) return next(q_err);
+        if (q_res.rows.length === 0) return next(new Error('Not a valid username'));
+  
+        res.json({
+          authenticated: Session.verify(req.cookies.session_str) &&
+            q_res.rows[0].session_id === id
+        });
+      }
+    )
+  });
+
 module.exports = router;
