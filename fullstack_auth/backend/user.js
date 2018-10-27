@@ -83,4 +83,29 @@ const set_session = (username, res, session_id) => {
     )
   });
 
+  router.post('/login', (req, res, next) => {
+    const { username, password } = req.body;
+  
+    pool.query(
+      'SELECT * FROM users WHERE username_hash = $1',
+      [hash(username)],
+      (q_err, q_res) => {
+        if (q_err) return next(q_err);
+  
+        const user = q_res.rows[0];
+  
+        if (user && user.password_hash === hash(password)) {
+          set_session(username, res, user.session_id)
+            .then(() => {
+              res.json({ msg: 'Successful login!' });
+            })
+            .catch(error => next(error));
+        } else {
+          res.status(400).json({ type: 'error', msg: 'Incorrect username/password' });
+        }
+      }
+    );
+  });
+  
+
 module.exports = router;
