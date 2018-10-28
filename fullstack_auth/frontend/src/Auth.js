@@ -1,5 +1,6 @@
 
 import history from './history';
+import { CONNECTION } from '../config';
 
 class Auth {
     loggedIn = false;
