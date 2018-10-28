@@ -123,6 +123,9 @@ const set_session = (username, res, session_id) => {
   });
 
   router.get('/authenticated', (req, res, next) => {
+    if (!req.cookies.session_str) return res.json({
+        msg: 'Not a valid username'
+    });
     const { username, id } = Session.parse(req.cookies.session_str);
   
     pool.query(
