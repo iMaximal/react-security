@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Login from './Login';
+import AuthForm from './AuthForm';
 import Logout from './Logout';
 
 const Home = (props) => (
@@ -17,7 +17,7 @@ const Home = (props) => (
 const App = (props) => (
     <div>
         {
-            props.auth.isAuthenticated() ? <Home {...props} /> : <Login {...props} />
+            props.auth.loggedIn ? <Home {...props} /> : <AuthForm {...props} />
         }
     </div>
 );
