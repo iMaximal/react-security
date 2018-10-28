@@ -19,6 +19,9 @@ class Auth {
           this.loggedIn = true;
           history.replace('/callback');
         }
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }
 
@@ -38,7 +41,10 @@ class Auth {
       .then(() => {
         this.loggedIn = false;
         history.replace('/');
-      });
+      })
+      .catch((err) => {
+        console.error(err);
+      });;
   }
 
   checkAuthentication = () => {
@@ -52,7 +58,10 @@ class Auth {
             this.loggedIn = true;
           }
           resolve();
-        });
+        })
+        .catch((err) => {
+          console.error(err);
+        });;
     });
   }
 };
